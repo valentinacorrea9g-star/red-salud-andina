@@ -135,7 +135,8 @@ def responder(mensaje: str, historial: list[dict]) -> str:
             ),
         )
         texto = resp.text or ""
-    except Exception:
+    except Exception as e:
+        print(f"[GEMINI] ERROR: {type(e).__name__}: {e}", flush=True)
         return RESP_ERROR
 
     etiqueta = TAG.search(texto)
